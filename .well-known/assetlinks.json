@@ -1,5 +1,5 @@
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
-  "target" : { "namespace": "android_app", "package_name": "fun.fifteenpuzzle.web15",
-               "sha256_cert_fingerprints": ["97:C7:24:B7:86:BB:5F:64:02:23:61:62:ED:96:CB:39:CC:2F:31:89:41:EF:CF:85:20:A6:D0:00:50:FE:B4:D9"] }
+  "target" : { "namespace": "android_app", "package_name": "fun.propuzg.moscow",
+               "sha256_cert_fingerprints": ["SHA256: 14:8A:C1:7C:FC:7D:A1:AF:1B:A3:E0:B3:F0:DB:1A:AF:5F:0E:59:02:39:BF:DA:D2:04:4F:6B:8F:48:33:5D:6C"] }
 }]
