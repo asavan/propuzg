@@ -13,7 +13,10 @@ function precache() {
     return caches.open(CACHE).then(function (cache) {
         return cache.addAll([
             './',
-            './propuzg.svg'
+            './propuzg.svg',
+			'./images/ment.svg',
+			'./images/ment_192.png',
+			'./images/ment_512.png'
         ]);
     });
 }
