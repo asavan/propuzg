@@ -1,4 +1,4 @@
-const version = "0.1.14";
+const version = "0.0.1";
 const CACHE = 'cache-only';
 
 function fromCache(request) {
@@ -13,11 +13,7 @@ function precache() {
     return caches.open(CACHE).then(function (cache) {
         return cache.addAll([
             './',
-            './game.js',
-            './gamepad.js',
-            './game.css',
-            './images/15.svg',
-            './images/reload.svg'
+            './propuzg.svg'
         ]);
     });
 }
@@ -25,12 +21,6 @@ function precache() {
 self.addEventListener('install', function (evt) {
     evt.waitUntil(precache());
 });
-
-// self.addEventListener('fetch', function (evt) {
-//     evt.respondWith(fromCache(evt.request).catch(function () {
-//         return fetch(evt.request);
-//     }));
-// });
 
 self.addEventListener('fetch', function(event) {
     event.respondWith(
