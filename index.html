@@ -33,9 +33,17 @@
  <script>
 	(function (window, document) {
     try {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const gender = urlParams.get('gender');
+        let gender;
+        const host = window.location.hostname;
+        const subdomain = host.split(".")[0];
+        const genders = ["she", "they"];
+        if (genders.indexOf(subdomain) >= 0) {
+            gender = subdomain;
+        } else {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            gender = urlParams.get('gender');
+        }
 		const img = document.getElementsByClassName("main_pic")[0];
 		if (gender === "she") {
 			img.src = "./images/female.svg";
