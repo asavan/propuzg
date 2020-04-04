@@ -26,7 +26,30 @@
 }
 
  </style>
+ 
  <body> 
-    <div class="box"><img class="main_pic" src="./propuzg.svg"></div>
+    <div class="box"><img class="main_pic" src="./images/male.svg"></div>
  </body>
+ <script>
+	(function (window, document) {
+    try {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const gender = urlParams.get('gender');
+		const img = document.getElementsByClassName("main_pic")[0];
+		if (gender === "she") {
+			img.src = "./images/female.svg";
+		} else if (gender === "they") {
+			img.src = "./images/they.svg";
+		}
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js', {scope: './'});
+        }
+    } catch (e) {
+        console.log(e);
+    }
+})(window, document);
+
+ </script>
 </html>
