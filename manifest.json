@@ -1,7 +1,7 @@
 {
     "name": "Moscow fastpass everywhere",
-	"short_name": "propuzg",
-	"icons": [
+    "short_name": "propuzg",
+    "icons": [
         {
             "src": "./images/ment_192.png",
             "sizes": "192x192",
@@ -12,8 +12,7 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
-        },
-        
+        }
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
