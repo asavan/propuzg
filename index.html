@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8">
-  <title>СпецПропуск.Москва</title>
-  <meta name="theme-color" content="#ffffff">
-  <link rel="manifest" href="./manifest.json">
-  <link id="favicon" rel="icon" href="./images/ment.svg" sizes="any" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./images/ment_512.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="description" content="СпецПропуск. Быстро. Удобно. Без очередей">
- </head>
- <style>
- * {
-    margin: 0;
-    padding: 0;
-}
+<head>
+    <meta charset="utf-8">
+    <title>СпецПропуск.Москва</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="./manifest.json">
+    <link id="favicon" rel="icon" href="./images/ment.svg" sizes="any" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./images/ment_512.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="СпецПропуск. Быстро. Удобно. Без очередей">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-.box {
-    margin-top: 20px;
-    max-width: 456px;
-}
+    .box {
+        margin-top: 20px;
+        max-width: 456px;
+    }
 
-.main_pic {
-	height: 100%;
-	width: 100%;
-}
+    .main_pic {
+        height: 100%;
+        width: 100%;
+    }
 
- </style>
- 
- <body> 
-    <div class="box"><img class="main_pic" src="./images/male.svg" alt="propuzg"></div>
- </body>
- <script>
-	(function (window, document) {
-    function install(window, document) {
-        const btnAdd = document.querySelector('.box');
-        let deferredPrompt = null;
-        btnAdd.addEventListener('click', (e) => {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((resp) => {
-                // console.log(JSON.stringify(resp));
+</style>
+
+<body>
+<div class="box"><img class="main_pic" src="./images/male.svg" alt="propuzg"></div>
+</body>
+<script>
+    (function (window, document) {
+        function install(window, document) {
+            const btnAdd = document.querySelector('.box');
+            let deferredPrompt = null;
+            btnAdd.addEventListener('click', (e) => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((resp) => {
+                    // console.log(JSON.stringify(resp));
+                });
             });
-        });
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
-    }
-    try {
-        let gender;
-        const host = window.location.hostname;
-        const subdomain = host.split(".")[0];
-        const genders = ["she", "they"];
-        if (genders.indexOf(subdomain) >= 0) {
-            gender = subdomain;
-        } else {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            gender = urlParams.get('gender');
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+            });
         }
-		const img = document.getElementsByClassName("main_pic")[0];
-		if (gender === "she") {
-			img.src = "./images/female.svg";
-		} else if (gender === "they") {
-			img.src = "./images/they.svg";
-		}
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js', {scope: './'});
+        try {
+            let gender;
+            const host = window.location.hostname;
+            const subdomain = host.split(".")[0];
+            const genders = ["she", "they"];
+            if (genders.indexOf(subdomain) >= 0) {
+                gender = subdomain;
+            } else {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                gender = urlParams.get('gender');
+            }
+            const img = document.getElementsByClassName("main_pic")[0];
+            if (gender === "she") {
+                img.src = "./images/female.svg";
+            } else if (gender === "they") {
+                img.src = "./images/they.svg";
+            }
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js', {scope: './'});
+            }
+            install(window, document);
+        } catch (e) {
+            console.log(e);
         }
-        install(window, document);
-    } catch (e) {
-        console.log(e);
-    }
-})(window, document);
+    })(window, document);
 
- </script>
+</script>
 </html>
