@@ -1,6 +1,6 @@
 {
-    "name": "Moscow fastpass everywhere",
-    "short_name": "propuzg",
+    "name": "МосГосПропуск",
+    "short_name": "МосПропуск",
     "icons": [
         {
             "src": "./images/ment_192.png",
